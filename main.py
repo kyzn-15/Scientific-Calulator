@@ -19,9 +19,9 @@ class Calculator:
         self.entry = ttk.Entry(root, textvariable=self.text_input, font=('Arial', 24), justify='right', state='readonly')
         self.entry.grid(row=0, column=0, columnspan=5, pady=20, padx=10, ipady=10, sticky="nsew")
         
-        self.create_buttons()
+        self.buttons()
         
-    def create_buttons(self):
+    def buttons(self):
         
         self.style.configure('Large.TButton', font=('Arial', 18), padding=10)
         
@@ -59,9 +59,9 @@ class Calculator:
         if char == "=":
             self.calculate()
         elif char == "D":
-            self.delete_last()
+            self.delete_button()
         elif char == "C":
-            self.clear_all()
+            self.clear_button()
         elif char == "log":
             self.expression += "math.log10("
             self.text_input.set(self.expression)
@@ -94,11 +94,11 @@ class Calculator:
             self.text_input.set("Error")
             self.expression = ""
             
-    def delete_last(self):
+    def delete_button(self):
         self.expression = self.expression[:-1]
         self.text_input.set(self.expression)
         
-    def clear_all(self):
+    def clear_button(self):
         self.expression = ""
         self.text_input.set("")
 
